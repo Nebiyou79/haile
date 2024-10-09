@@ -16,15 +16,15 @@ const Contact = () => {
           <section className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="bg-white text-gray-800 shadow-lg rounded-xl p-8 text-center">
               <h3 className="text-2xl font-semibold mt-4">Phone</h3>
-              <p className="mt-4 text-lg">+1 (123) 456-7890</p>
+              <p className="mt-4 text-lg">804-610-3825 | 702-815-9685</p>
             </div>
             <div className="bg-white text-gray-800 shadow-lg rounded-xl p-8 text-center">
               <h3 className="text-2xl font-semibold mt-4">Email</h3>
-              <p className="mt-4 text-lg">info@financeworld.com</p>
+              <p className="mt-4 text-lg">haile@fwl-cpa.com</p>
             </div>
             <div className="bg-white text-gray-800 shadow-lg rounded-xl p-8 text-center">
               <h3 className="text-2xl font-semibold mt-4">Location</h3>
-              <p className="mt-4 text-lg">123 Finance St, New York, NY 10001</p>
+              <p className="mt-4 text-lg">6802 Paragon Place, Suite 410, Richmond, VA 23230</p>
             </div>
           </section>
           <ContactForm/>

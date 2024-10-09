@@ -2,24 +2,26 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 
-// Updated Navbar with persistent dropdown menu for Services
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLUListElement | null>(null); // Reference to the dropdown menu
+  const [menuOpen, setMenuOpen] = useState(false);
+  const dropdownRef = useRef<HTMLUListElement | null>(null);
 
-  // Toggle dropdown open state
   const toggleDropdown = () => {
     setDropdownOpen(prevState => !prevState);
   };
 
-  // Close dropdown if clicked outside
+  const toggleMenu = () => {
+    setMenuOpen(prevState => !prevState);
+  };
+
   const handleClickOutside = (event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setDropdownOpen(false);
+      setMenuOpen(false);
     }
   };
 
-  // Effect to listen for outside clicks
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -30,7 +32,6 @@ const Navbar = () => {
   return (
     <nav className="bg-blue-400 text-black py-4 sticky top-0 z-50 shadow-md">
       <div className="container mx-auto flex justify-between items-center px-4">
-        {/* Logo Section */}
         <div className="flex items-center space-x-4">
           <Image src="/logo.png" alt="Company Logo" width={50} height={50} />
           <div>
@@ -41,11 +42,19 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Hamburger icon for mobile */}
+        <button
+          className="md:hidden p-2 focus:outline-none"
+          onClick={toggleMenu}
+        >
+          <span className="text-white">☰</span>
+        </button>
+
         {/* Links Section */}
-        <div className="relative flex space-x-6">
+        <div className={`absolute md:static inset-0 md:flex md:items-center md:space-x-6 transition-all duration-300 ease-in-out ${menuOpen ? 'flex' : 'hidden md:flex'} bg-blue-400 md:bg-transparent`}>
           <Link href="/" className="hover:bg-orange-600 py-2 px-4 rounded transition">Home</Link>
           <Link href="/about" className="hover:bg-orange-600 py-2 px-4 rounded transition">About</Link>
-          
+
           {/* Services Dropdown */}
           <div className="relative">
             <button

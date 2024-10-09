@@ -33,7 +33,12 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center px-4">
         <div className="flex items-center space-x-4">
           <Image src="/logo.png" alt="Company Logo" width={50} height={50} />
-          <h1 className="text-2xl font-bold">Finance World</h1>
+          <div>
+            <h1 className="text-2xl font-bold">Finance World</h1>
+            <div className="hidden md:flex items-center space-x-2">
+              <Image src="/capture.png" alt="Haile & Associates, PC" width={200} height={50} />
+            </div>
+          </div>
         </div>
 
         <button
@@ -43,7 +48,7 @@ const Navbar = () => {
           <span className="text-white">☰</span>
         </button>
 
-        <div className={`flex-col md:flex md:flex-row md:items-center md:space-x-6 transition-all duration-300 ease-in-out ${menuOpen ? 'flex' : 'hidden'} md:flex`}>
+        <div className={`md:flex md:items-center md:space-x-6 transition-all duration-300 ease-in-out ${menuOpen ? 'flex flex-col' : 'hidden'} md:flex`}>
           <Link href="/" className="block md:inline hover:bg-orange-600 py-2 px-4 rounded transition">Home</Link>
           <Link href="/about" className="block md:inline hover:bg-orange-600 py-2 px-4 rounded transition">About</Link>
 

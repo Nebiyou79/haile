@@ -18,7 +18,6 @@ const Navbar = () => {
   const handleClickOutside = (event: MouseEvent) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
       setDropdownOpen(false);
-      setMenuOpen(false);
     }
   };
 
@@ -34,15 +33,9 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center px-4">
         <div className="flex items-center space-x-4">
           <Image src="/logo.png" alt="Company Logo" width={50} height={50} />
-          <div>
-            <h1 className="text-2xl font-bold">Finance World</h1>
-            <div className="flex items-center space-x-2">
-              <Image src="/capture.png" alt="Haile & Associates, PC" width={200} height={50} />
-            </div>
-          </div>
+          <h1 className="text-2xl font-bold">Finance World</h1>
         </div>
 
-        {/* Hamburger icon for mobile */}
         <button
           className="md:hidden p-2 focus:outline-none"
           onClick={toggleMenu}
@@ -50,16 +43,14 @@ const Navbar = () => {
           <span className="text-white">☰</span>
         </button>
 
-        {/* Links Section */}
-        <div className={`absolute md:static inset-0 md:flex md:items-center md:space-x-6 transition-all duration-300 ease-in-out ${menuOpen ? 'flex' : 'hidden md:flex'} bg-blue-400 md:bg-transparent`}>
-          <Link href="/" className="hover:bg-orange-600 py-2 px-4 rounded transition">Home</Link>
-          <Link href="/about" className="hover:bg-orange-600 py-2 px-4 rounded transition">About</Link>
+        <div className={`flex-col md:flex md:flex-row md:items-center md:space-x-6 transition-all duration-300 ease-in-out ${menuOpen ? 'flex' : 'hidden'} md:flex`}>
+          <Link href="/" className="block md:inline hover:bg-orange-600 py-2 px-4 rounded transition">Home</Link>
+          <Link href="/about" className="block md:inline hover:bg-orange-600 py-2 px-4 rounded transition">About</Link>
 
-          {/* Services Dropdown */}
           <div className="relative">
             <button
               onClick={toggleDropdown}
-              className="hover:bg-orange-600 py-2 px-4 rounded transition"
+              className="block md:inline hover:bg-orange-600 py-2 px-4 rounded transition"
             >
               Services
             </button>
@@ -78,8 +69,8 @@ const Navbar = () => {
             )}
           </div>
 
-          <Link href="/resources" className="hover:bg-orange-600 py-2 px-4 rounded transition">Resources</Link>
-          <Link href="/contact" className="hover:bg-orange-600 py-2 px-4 rounded transition">Contact</Link>
+          <Link href="/resources" className="block md:inline hover:bg-orange-600 py-2 px-4 rounded transition">Resources</Link>
+          <Link href="/contact" className="block md:inline hover:bg-orange-600 py-2 px-4 rounded transition">Contact</Link>
         </div>
       </div>
     </nav>

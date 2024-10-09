@@ -37,7 +37,7 @@ const Navbar = () => {
           <div>
             <h1 className="text-2xl font-bold">Finance World</h1>
             <div className="flex items-center space-x-2">
-              <Image src="/Capture.PNG" alt="Haile & Associates, PC" width={200} height={50} />
+              <Image src="/capture.png" alt="Haile & Associates, PC" width={200} height={50} />
             </div>
           </div>
         </div>

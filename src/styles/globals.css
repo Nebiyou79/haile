@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* Light background */
+  --foreground: #171717; /* Dark text */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a0a0a; /* Dark background */
+    --foreground: #ededed; /* Light text */
   }
 }
 
@@ -18,10 +18,37 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
 @layer utilities {
   .text-balance {
-    text-wrap: balance;
+    text-wrap: balance; /* Custom utility */
+  }
+
+  /* Custom utility classes for theme colors */
+  .bg-primary {
+    background-color: var(--foreground);
+  }
+  
+  .bg-secondary {
+    background-color: var(--background);
+  }
+
+  .text-primary {
+    color: var(--foreground);
+  }
+
+  .text-secondary {
+    color: var(--background);
+  }
+
+  /* Hover and focus utilities */
+  .hover\:bg-primary:hover {
+    background-color: var(--foreground);
+  }
+
+  .hover\:bg-secondary:hover {
+    background-color: var(--background);
   }
 }

@@ -21,10 +21,12 @@ const Footer = () => {
         <div className="flex flex-col items-center">
           <h3 className="text-lg font-bold mb-4">Quick Links</h3>
           <ul className="space-y-2 text-center">
-            <li><Link href="/" className="hover:bg-orange-600 py-2 px-4 rounded transition">Home</Link></li>
-            <li><Link href="/about" className="hover:bg-orange-600 py-2 px-4 rounded transition">About</Link></li>
-            <li><Link href="/services" className="hover:bg-orange-600 py-2 px-4 rounded transition">Services</Link></li>
-            <li><Link href="/contact" className="hover:bg-orange-600 py-2 px-4 rounded transition">Contact</Link></li>
+            <li><Link href="/" className="hover:bg-white py-2 px-4 rounded transition">Home</Link></li>
+            <li><Link href="/about" className="hover:bg-white py-2 px-4 rounded transition">About</Link></li>
+            <li><Link href="/services/small-business-accounting" className="hover:bg-white py-2 px-4 rounded transition">Small Buisness Acounting</Link></li>
+            <li><Link href="/services/tax-service" className="hover:bg-white py-2 px-4 rounded transition">Tax Services</Link></li>
+            <li><Link href="/services/financial-consulting" className="hover:bg-white py-2 px-4 rounded transition">Financial Consulting</Link></li>
+            <li><Link href="/contact" className="hover:bg-white py-2 px-4 rounded transition">Contact</Link></li>
           </ul>
         </div>
 

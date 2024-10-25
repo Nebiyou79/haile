@@ -32,7 +32,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-white sticky border-b-indigo-400 text-black py-4 top-0 z-50 shadow-md">
+    <nav className="bg-white sticky border-blue-800 text-black py-4 top-0 z-50 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center space-x-4">
@@ -69,7 +69,7 @@ const Navbar = () => {
         <ul className="hidden md:flex md:space-x-6">
           <li>
             <button className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
-              <Link href="/" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
+              <Link href="/">
                 Home
               </Link>
             </button>
@@ -125,14 +125,14 @@ const Navbar = () => {
 
           <li>
             <button className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
-              <Link href="/resources" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
+              <Link href="/resources">
                 Resources
               </Link>
             </button>
           </li>
           <li>
             <button className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
-              <Link href="/contact" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
+              <Link href="/contact">
                 Contact
               </Link>
             </button>

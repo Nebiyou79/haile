@@ -5,7 +5,7 @@ import Image from 'next/image';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLLIElement>(null);  // Dropdown reference with type
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -18,13 +18,13 @@ const Navbar = () => {
   };
 
   // Close dropdown when clicking outside
-  const handleClickOutside = (event: MouseEvent) => {  // Event type specified
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-      setServicesDropdownOpen(false);
-    }
-  };
-
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setServicesDropdownOpen(false);
+      }
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -69,7 +69,7 @@ const Navbar = () => {
         <ul className="hidden md:flex md:space-x-6">
           <li>
             <button className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
-              <Link href="/" >
+              <Link href="/" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
                 Home
               </Link>
             </button>
@@ -83,7 +83,7 @@ const Navbar = () => {
           </li>
 
           {/* Services Dropdown */}
-          <li className="relative" ref={dropdownRef}>
+          <li className="relative">
             <button
               onClick={toggleServicesDropdown}
               className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300"
@@ -125,20 +125,21 @@ const Navbar = () => {
 
           <li>
             <button className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
-              <Link href="/resources">
+              <Link href="/resources" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
                 Resources
               </Link>
             </button>
           </li>
           <li>
             <button className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
-              <Link href="/contact">
+              <Link href="/contact" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
                 Contact
               </Link>
             </button>
           </li>
         </ul>
       </div>
+
       {/* Mobile Menu Links */}
       {menuOpen && (
         <div className="md:hidden mt-4">
@@ -151,7 +152,7 @@ const Navbar = () => {
             </Link>
 
             {/* Mobile Dropdown for Services */}
-            <div className="text-center">
+            <div className="text-center" ref={dropdownRef}>
               <button
                 onClick={toggleServicesDropdown}
                 className="w-full text-black font-semibold py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md"
@@ -160,13 +161,13 @@ const Navbar = () => {
               </button>
               {servicesDropdownOpen && (
                 <div className="space-y-2 mt-2">
-                  <Link href="/services/small-business-accounting" className="block text-black font-semibold py-2 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center">
+                  <Link href="/services/small-business-accounting" className="block text-black font-semibold py-2 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center" onClick={(e) => { e.stopPropagation(); setServicesDropdownOpen(false); }}>
                     Small Business Accounting
                   </Link>
-                  <Link href="/services/tax-service" className="block text-black font-semibold py-2 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center">
+                  <Link href="/services/tax-service" className="block text-black font-semibold py-2 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center" onClick={(e) => { e.stopPropagation(); setServicesDropdownOpen(false); }}>
                     Tax Service
                   </Link>
-                  <Link href="/services/financial-consulting" className="block text-black font-semibold py-2 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center">
+                  <Link href="/services/financial-consulting" className="block text-black font-semibold py-2 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center" onClick={(e) => { e.stopPropagation(); setServicesDropdownOpen(false); }}>
                     Financial Consulting
                   </Link>
                 </div>

@@ -46,7 +46,7 @@ consulting, and financial services to support your growth.          </p>
     </div>
 
     {/* Text Content */}
-    <div className="w-full md:w-1/2 p-6 text-center md:text-left">
+    <div className="w-full md:w-1/2 p-6 text-center md:text-left bg-secondary text-primary dark:bg-primary dark:text-secondary">
       <h2 className="text-4xl font-bold">About Our Company</h2>
       <p className="mt-4 text-lg">
         At Finacial World, we are committed to providing personalized financial services that meet the unique needs of each client. Our team is dedicated to excellence in accounting, tax, and consulting services.
@@ -57,8 +57,6 @@ consulting, and financial services to support your growth.          </p>
     </div>
   </div>
 </section>
-
-
      {/* Services Section */}
 <section className="py-16 bg-gray-100">
   <div className="max-w-7xl mx-auto text-center">

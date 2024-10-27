@@ -22,11 +22,11 @@ body {
 }
 
 @layer utilities {
+  /* Custom utility classes */
   .text-balance {
     text-wrap: balance; /* Custom utility */
   }
 
-  /* Custom utility classes for theme colors */
   .bg-primary {
     background-color: var(--foreground);
   }
@@ -43,12 +43,12 @@ body {
     color: var(--background);
   }
 
-  /* Hover and focus utilities */
-  .hover\:bg-primary:hover {
-    background-color: var(--foreground);
+  /* Dark mode classes using Tailwind's `dark:` modifier */
+  .dark .bg-primary {
+    background-color: var(--background);
   }
 
-  .hover\:bg-secondary:hover {
-    background-color: var(--background);
+  .dark .text-primary {
+    color: var(--background);
   }
 }

@@ -35,8 +35,8 @@ const Resources = () => {
             <Image src="/tax-resources.jpg" alt="Tax Resources" width={600} height={400} className="rounded-md shadow-md"/>
           </div> 
           <div className="md:w-1/2 pl-0 md:pl-8 bg-secondary text-primary dark:bg-primary dark:text-secondary">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Tax Resources</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-2xl font-semibold text-white mb-4">Tax Resources</h2>
+            <p className="text-white mb-6">
               Stay up-to-date with the latest tax regulations, forms, and state-specific requirements by visiting our trusted tax resource websites.
             </p>
             <ul className="space-y-3">
@@ -57,8 +57,8 @@ const Resources = () => {
             <Image src="/accounting-tools.jpg" alt="Accounting Tools" width={600} height={400} className="rounded-md shadow-md"/>
           </div>
           <div className="md:w-1/2 pr-0 md:pr-8 bg-secondary text-primary dark:bg-primary dark:text-secondary">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Accounting Tools</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-2xl font-semibold text-white mb-4">Accounting Tools</h2>
+            <p className="text-white mb-6">
               Discover essential accounting tools that streamline your bookkeeping and financial management. These tools help keep your business finances organized and compliant.
             </p>
             <ul className="space-y-3">
@@ -79,8 +79,8 @@ const Resources = () => {
             <Image src="/financial-insights.jpg" alt="Financial Insights" width={600} height={400} className="rounded-md shadow-md"/>
           </div>
           <div className="md:w-1/2 pl-0 md:pl-8 bg-secondary text-primary dark:bg-primary dark:text-secondary">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Financial Insights</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-2xl font-semibold text-white mb-4">Financial Insights</h2>
+            <p className="text-white mb-6">
               Explore the latest financial trends, insights, and strategies to help grow and optimize your business. Stay informed with expert insights and analysis.
             </p>
             <ul className="space-y-3">

@@ -17,7 +17,7 @@ const About = () => {
         />
 
         {/* Company Section */}
-        <div className="container mx-auto mb-12 p-6 bg-white rounded-lg shadow-lg relative z-10">
+        <div className="container mx-auto mb-12 p-6 bg-white rounded-lg shadow-lg relative z-10 bg-secondary text-primary dark:bg-primary dark:text-secondary">
           <h1 className="text-4xl font-bold mb-4">About Us</h1>
           <p className="text-lg">
             At Haile & Associates, PC, we are committed to providing exceptional consulting, accounting, tax, and auditing services. 
@@ -26,7 +26,7 @@ const About = () => {
         </div>
 
         {/* Mission Statement Section */}
-        <div className="container mx-auto mb-12 p-6 bg-white rounded-lg shadow-lg flex flex-col md:flex-row items-center relative z-10">
+        <div className="container mx-auto mb-12 p-6 bg-white rounded-lg shadow-lg flex flex-col md:flex-row items-center relative z-10 bg-secondary text-primary dark:bg-primary dark:text-secondary">
           <div className="w-full md:w-1/2">
             <Image 
               src="/mission-statement.jpg"
@@ -36,7 +36,7 @@ const About = () => {
               className="rounded-lg"
             />
           </div>
-          <div className="w-full md:w-1/2 md:pl-8 mt-4 md:mt-0">
+          <div className="w-full md:w-1/2 md:pl-8 mt-4 md:mt-0 bg-secondary text-primary dark:bg-primary dark:text-secondary">
             <h2 className="text-2xl font-bold mb-4">Our Mission Statement</h2>
             <p className="text-lg">
               Finance World is committed to providing consulting, accounting, tax, and auditing services. We do so by utilizing technology to its fullest capabilities, taking time to understand and analyze a business’s needs, long-term goals, and objectives to personalize each and every interaction.
@@ -45,7 +45,7 @@ const About = () => {
         </div>
 
         {/* Core Values Section */}
-        <div className="container mx-auto mb-12 p-6 bg-white rounded-lg shadow-lg flex flex-col md:flex-row items-center relative z-10">
+        <div className="container mx-auto mb-12 p-6 bg-white rounded-lg shadow-lg flex flex-col md:flex-row items-center relative z-10 bg-secondary text-primary dark:bg-primary dark:text-secondary">
           <div className="w-full md:w-1/2 order-2 md:order-1 md:pr-8 mt-4 md:mt-0">
             <h2 className="text-2xl font-bold mb-4">Company Core Values</h2>
             <ul className="list-disc list-inside mb-6 space-y-2">

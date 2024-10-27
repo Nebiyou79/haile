@@ -26,7 +26,7 @@ const Resources = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       <Navbar />
-      <div className="max-w-7xl mx-auto p-6 py-12">
+      <div className="max-w-7xl mx-auto p-6 py-12 bg-secondary text-primary dark:bg-primary dark:text-secondary">
         <h1 className="text-4xl font-bold text-center mb-12">Resources</h1>
 
         {/* Tax Resources Section */}

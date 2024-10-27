@@ -5,7 +5,7 @@ const SmallBusinessAccounting = () => {
   return (
     <div className="relative min-h-screen bg-gray-100">
         <Navbar/>
-      <div className="relative container mx-auto p-8 z-10">
+      <div className="relative container mx-auto p-8 z-10 bg-secondary text-primary dark:bg-primary dark:text-secondary">
         <h1 className="text-3xl font-bold mb-4">Small Business Accounting</h1>
         <p className="mb-6">
           At Finance World, we specialize in providing comprehensive accounting services tailored for small businesses. 

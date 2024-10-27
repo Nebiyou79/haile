@@ -5,7 +5,7 @@ const FinancialConsulting = () => {
   return (
     <div className="relative min-h-screen bg-gray-100">
         <Navbar/>
-      <div className="relative container mx-auto p-8 z-10">
+      <div className="relative container mx-auto p-8 z-10 bg-secondary text-primary dark:bg-primary dark:text-secondary">
         <h1 className="text-3xl font-bold mb-4">Financial Consulting</h1>
         <p className="mb-6">
           Our financial consulting services are designed to guide businesses through complex financial landscapes, ensuring you make informed decisions that promote growth and stability. 
@@ -41,7 +41,7 @@ const FinancialConsulting = () => {
             <p>We perform thorough cost analysis to help you understand your expenses and identify opportunities for savings.</p>
             <p className="mt-2">Our insights enable you to make informed decisions that positively impact your bottom line and overall financial health.</p>
           </div>
-          <div className="max-w-lg mx-auto p-4 bg-gradient-to-r from-green-500 to-blue-500 text-white p-6 rounded-lg shadow-lg">
+          <div className="max-w-lg mx-auto p-4 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-lg shadow-lg">
   <h2 className="text-2xl font-bold mb-2">Business Formation</h2>
   <p className="mb-4 text-lg">
     Before you leap into your new venture, the choice of entity is a crucial decision with potential tax and legal implications. In concert with a trusted legal advisor, we can guide you through the common pitfalls and obstacles that come with starting your business.

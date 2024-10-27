@@ -5,7 +5,7 @@ const TaxServices = () => {
   return (
     <div className="relative min-h-screen bg-gray-100">
         <Navbar/>
-      <div className="relative container mx-auto p-8 z-10">
+      <div className="relative container mx-auto p-8 z-10 bg-secondary text-primary dark:bg-primary dark:text-secondary">
         <h1 className="text-3xl font-bold mb-4">Tax Services</h1>
         <p className="mb-6">
           Our tax services ensure that you remain compliant with all tax regulations while minimizing your tax liabilities. 

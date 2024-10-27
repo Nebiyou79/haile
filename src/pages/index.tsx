@@ -59,7 +59,7 @@ consulting, and financial services to support your growth.          </p>
 </section>
      {/* Services Section */}
 <section className="py-16 bg-gray-100">
-  <div className="max-w-7xl mx-auto text-center">
+  <div className="max-w-7xl mx-auto text-center bg-secondary text-primary dark:bg-primary dark:text-secondary">
     <h2 className="text-4xl font-bold">Our Services</h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
       
@@ -114,7 +114,7 @@ consulting, and financial services to support your growth.          </p>
 
 {/* Contact Section */}
 <section className="py-16 bg-blue-50">
-  <div className="max-w-7xl mx-auto text-center">
+  <div className="max-w-7xl mx-auto text-center bg-secondary text-primary dark:bg-primary dark:text-secondary">
     <h2 className="text-4xl font-bold">Get in Touch</h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
       

@@ -80,7 +80,7 @@ const Resources = () => {
           </div>
           <div className="md:w-1/2 pl-0 md:pl-8 bg-secondary text-primary dark:bg-primary dark:text-secondary">
             <h2 className="text-2xl font-semibold text-white mb-4">Financial Insights</h2>
-            <p className="text-white mb-6">
+            <p className="bg-secondary text-primary dark:bg-primary dark:text-secondary mb-6">
               Explore the latest financial trends, insights, and strategies to help grow and optimize your business. Stay informed with expert insights and analysis.
             </p>
             <ul className="space-y-3">

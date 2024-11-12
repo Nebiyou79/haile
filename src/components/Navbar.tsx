@@ -66,78 +66,69 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex md:space-x-6">
-          <li>
-            <button className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
-              <Link href="/">
-                Home
-              </Link>
-            </button>
-          </li>
-          <li>
-            <button className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
-              <Link href="/about">
-                About
-              </Link>
-            </button>
-          </li>
+        <ul className="hidden md:flex md:space-x-6 items-center">
+  <li>
+    <Link href="/" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
+      Home
+    </Link>
+  </li>
+  <li>
+    <Link href="/about" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
+      About
+    </Link>
+  </li>
 
-          {/* Services Dropdown */}
-          <li className="relative">
-            <button
-              onClick={toggleServicesDropdown}
-              className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300"
-            >
-              Services
-            </button>
-            {servicesDropdownOpen && (
-              <ul className="absolute left-0 top-full mt-2 w-48 bg-blue-600 rounded-lg shadow-lg z-50">
-                <li>
-                  <Link
-                    href="/services/small-business-accounting"
-                    className="block px-4 py-2 text-white hover:bg-blue-700 rounded transition-all duration-300"
-                    onClick={() => setServicesDropdownOpen(false)}
-                  >
-                    Small Business Accounting
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/tax-service"
-                    className="block px-4 py-2 text-white hover:bg-blue-700 rounded transition-all duration-300"
-                    onClick={() => setServicesDropdownOpen(false)}
-                  >
-                    Tax Service
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/financial-consulting"
-                    className="block px-4 py-2 text-white hover:bg-blue-700 rounded transition-all duration-300"
-                    onClick={() => setServicesDropdownOpen(false)}
-                  >
-                    Financial Consulting
-                  </Link>
-                </li>
-              </ul>
-            )}
-          </li>
+  {/* Services Dropdown */}
+  <li className="relative">
+    <button
+      onClick={toggleServicesDropdown}
+      className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300"
+    >
+      Services
+    </button>
+    {servicesDropdownOpen && (
+      <ul className="absolute left-0 top-full mt-2 w-48 bg-blue-600 rounded-lg shadow-lg z-50">
+        <li>
+          <Link href="/services/small-business-accounting" className="block px-4 py-2 text-white hover:bg-blue-700 rounded transition-all duration-300" onClick={() => setServicesDropdownOpen(false)}>
+            Small Business Accounting
+          </Link>
+        </li>
+        <li>
+          <Link href="/services/tax-service" className="block px-4 py-2 text-white hover:bg-blue-700 rounded transition-all duration-300" onClick={() => setServicesDropdownOpen(false)}>
+            Tax Service
+          </Link>
+        </li>
+        <li>
+          <Link href="/services/financial-consulting" className="block px-4 py-2 text-white hover:bg-blue-700 rounded transition-all duration-300" onClick={() => setServicesDropdownOpen(false)}>
+            Financial Consulting
+          </Link>
+        </li>
+        <li>
+          <Link href="/services/resources" className="block px-4 py-2 text-white hover:bg-blue-700 rounded transition-all duration-300" onClick={() => setServicesDropdownOpen(false)}>
+            Resources
+          </Link>
+        </li>
+      </ul>
+    )}
+  </li>
 
-          <li>
-            <button className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
-              <Link href="/resources">
-                Resources
-              </Link>
-            </button>
-          </li>
-          <li>
-            <button className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
-              <Link href="/contact">
-                Contact
-              </Link>
-            </button>
-          </li>
-        </ul>
+  <li>
+    <Link href="/payment" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
+      Payment
+    </Link>
+  </li>
+  <li>
+    <Link href="/contact" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
+      Contact
+    </Link>
+  </li>
+  <li>
+    <Link href="/portal" className="text-black font-semibold py-2 px-4 rounded hover:bg-blue-700 transition-all duration-300">
+      Portal
+    </Link>
+  </li>
+</ul>
+
       </div>
 
       {/* Mobile Menu Links */}
@@ -150,7 +141,6 @@ const Navbar = () => {
             <Link href="/about" className="block text-black font-semibold py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center">
               About
             </Link>
-
             {/* Mobile Dropdown for Services */}
             <div className="text-center" ref={dropdownRef}>
               <button
@@ -170,15 +160,21 @@ const Navbar = () => {
                   <Link href="/services/financial-consulting" className="block text-black font-semibold py-2 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center" onClick={(e) => { e.stopPropagation(); setServicesDropdownOpen(false); }}>
                     Financial Consulting
                   </Link>
+                  <Link href="/services/resources" className="block text-black font-semibold py-2 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center" onClick={(e) => { e.stopPropagation(); setServicesDropdownOpen(false); }}>
+                    Resources
+                  </Link>
                 </div>
               )}
             </div>
-
-            <Link href="/resources" className="block text-black font-semibold py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center">
-              Resources
+            {/* New Payment and Portal Links for Mobile */}
+            <Link href="/payment" className="block text-black font-semibold py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center">
+              Payment
             </Link>
             <Link href="/contact" className="block text-black font-semibold py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center">
               Contact
+            </Link>
+            <Link href="/portal" className="block text-black font-semibold py-4 px-6 bg-blue-600 hover:bg-blue-700 transition-all duration-300 rounded-md text-center">
+              Portal
             </Link>
           </div>
         </div>

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
+import AppointmentModal from '../components/AppointmentModal';
 
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <>
       <Navbar />
@@ -21,13 +23,12 @@ const Home = () => {
           <p className="mt-4 text-xl max-w-3xl mx-auto">
             Welcome to Finance World, where we work together to provide comprehensive accounting, tax, consulting, and financial services to support your growth.
           </p>
-          <Link href="/services/small-business-accounting">
           <button
-          className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition"
+            onClick={() => setIsModalOpen(true)}
+            className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition"
           >
-          More About Us
-            </button>
-            </Link>
+            Schedule A Consultation
+          </button>
         </div>
       </section>
 
@@ -152,6 +153,8 @@ const Home = () => {
   </div>
 </section>
       <Footer />
+
+      <AppointmentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };

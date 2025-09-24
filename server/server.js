@@ -8,11 +8,15 @@ const app = express();
 
 // Enhanced CORS configuration
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? process.env.CLIENT_URL 
-    : ['http://localhost:3000','http://109.176.198.116:5000', 'https://fwl-cpa.com',],
+  origin: process.env.NODE_ENV === 'production'
+    ? process.env.CLIENT_URL // production domain
+    : ['http://localhost:3000', 'http://109.176.198.116:3000'], // development / testing
   optionsSuccessStatus: 200
 };
+
+app.use(cors(corsOptions));
+
+
 
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '10mb' }));

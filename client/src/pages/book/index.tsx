@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // pages/book/index.tsx
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
@@ -10,7 +9,8 @@ import DatePicker from 'react-datepicker';
 import { toast } from 'react-toastify';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+// ✅ Dynamically use NEXT_PUBLIC_API_URL
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 interface TimeSlot {
   startTime: string;
@@ -32,8 +32,7 @@ export default function BookConsultation() {
   const router = useRouter();
   const [step, setStep] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
-  const [availableSlots, setAvailableSlots] = useState<TimeSlot[]>([]);
-
+  const [availableSlots, setAvailableSlots] = useState<(TimeSlot & { isBlocked: boolean })[]>([]);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -52,6 +51,7 @@ export default function BookConsultation() {
     'Business Advisory'
   ];
 
+  // ✅ Fetch slots whenever date changes
   useEffect(() => {
     if (formData.date) {
       fetchAvailableSlots();
@@ -59,30 +59,24 @@ export default function BookConsultation() {
   }, [formData.date]);
 
   const fetchAvailableSlots = async () => {
+    if (!formData.date) return;
+
     try {
       setLoading(true);
-      const dateStr = formData.date?.toISOString().split('T')[0];
+      const dateStr = formData.date.toISOString().split('T')[0];
+
       const response = await axios.get(`${API_URL}/api/appointments/availability?date=${dateStr}`);
 
       // Filter slots: mark 9am–1pm as blocked
-// Inside fetchAvailableSlots
-const slots: (TimeSlot & { isBlocked: boolean })[] = response.data.map((slot: TimeSlot) => {
-  const startHour = parseInt(slot.startTime.split(':')[0], 10);
-
-  // Morning 9–13 → blocked (visible but not selectable)
-  const isBlocked = startHour < 13;
-
-  return {
-    ...slot,
-    isBlocked
-  };
-});
-
-setAvailableSlots(slots);
-
+      const slots: (TimeSlot & { isBlocked: boolean })[] = response.data.map((slot: TimeSlot) => {
+        const startHour = parseInt(slot.startTime.split(':')[0], 10);
+        const isBlocked = startHour < 13; // morning blocked
+        return { ...slot, isBlocked };
+      });
 
       setAvailableSlots(slots);
-    } catch (error : any) {
+    } catch (err: any) {
+      console.error('Error fetching slots:', err);
       toast.error('Failed to fetch available time slots');
     } finally {
       setLoading(false);
@@ -90,10 +84,7 @@ setAvailableSlots(slots);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleDateSelect = (date: Date | null) => {
@@ -101,27 +92,30 @@ setAvailableSlots(slots);
     setStep(2);
   };
 
-  const handleTimeSelect = (slot: TimeSlot) => {
-    if ((slot as any).isBlocked) return; // cannot select blocked slot
+  const handleTimeSelect = (slot: TimeSlot & { isBlocked?: boolean }) => {
+    if (slot.isBlocked) return;
     setFormData(prev => ({ ...prev, timeSlot: slot }));
     setStep(3);
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!formData.date || !formData.timeSlot) {
+      toast.error('Please select a date and time');
+      return;
+    }
+
     setLoading(true);
-
     try {
-await axios.post(`${API_URL}/api/appointments`, {
-  ...formData,
-  date: formData.date?.toISOString().split('T')[0]
-});
-
-
+      await axios.post(`${API_URL}/api/appointments`, {
+        ...formData,
+        date: formData.date.toISOString().split('T')[0]
+      });
       toast.success('Appointment booked successfully!');
       router.push('/book/success');
-    } catch (error: any) {
-      toast.error(error.response?.data?.error || 'Booking failed');
+    } catch (err: any) {
+      console.error('Booking error:', err);
+      toast.error(err.response?.data?.error || 'Booking failed');
     } finally {
       setLoading(false);
     }
@@ -192,30 +186,26 @@ await axios.post(`${API_URL}/api/appointments`, {
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-  {availableSlots.map((slot, index) => {
-    const isBlocked = (slot as any).isBlocked;
-    return (
-      <button
-        key={index}
-        onClick={() => handleTimeSelect(slot)}
-        disabled={isBlocked} // prevent selecting blocked slots
-        className={`rounded-xl p-4 border-2 transition-all duration-200 ${
-          isBlocked
-            ? 'bg-gray-200 text-gray-500 cursor-not-allowed' // blocked morning slots
-            : 'bg-white text-gray-800 hover:border-blue-500 hover:bg-blue-50' // afternoon bookable
-        }`}
-      >
-        <div className="text-lg font-medium">
-          {slot.startTime.slice(0, 5)} - {slot.endTime.slice(0, 5)}
-        </div>
-        <div className="text-sm mt-1">
-          {isBlocked ? 'Unavailable (Busy 9am–1pm)' : formData.appointmentType === 'in-person' ? 'In-Office' : 'Virtual'}
-        </div>
-      </button>
-    );
-  })}
-</div>
-
+                      {availableSlots.map((slot, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => handleTimeSelect(slot)}
+                          disabled={slot.isBlocked}
+                          className={`rounded-xl p-4 border-2 transition-all duration-200 ${
+                            slot.isBlocked
+                              ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                              : 'bg-white text-gray-800 hover:border-blue-500 hover:bg-blue-50'
+                          }`}
+                        >
+                          <div className="text-lg font-medium">
+                            {slot.startTime.slice(0, 5)} - {slot.endTime.slice(0, 5)}
+                          </div>
+                          <div className="text-sm mt-1">
+                            {slot.isBlocked ? 'Unavailable (Busy 9am–1pm)' : formData.appointmentType === 'in-person' ? 'In-Office' : 'Virtual'}
+                          </div>
+                        </button>
+                      ))}
+                    </div>
                   )}
                 </div>
               )}
@@ -225,68 +215,19 @@ await axios.post(`${API_URL}/api/appointments`, {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <h3 className="text-2xl font-semibold text-gray-800">Your Information</h3>
                   <div className="grid md:grid-cols-2 gap-6">
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="Full Name"
-                      className="w-full px-4 py-3 border rounded-lg"
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="Email Address"
-                      className="w-full px-4 py-3 border rounded-lg"
-                    />
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="Phone Number"
-                      className="w-full px-4 py-3 border rounded-lg"
-                    />
-                    <select
-                      name="service"
-                      value={formData.service}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border text-black rounded-lg"
-                    >
-                      {services.map((service) => (
-                        <option key={service} value={service}>{service}</option>
-                      ))}
+                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} required placeholder="Full Name" className="w-full px-4 py-3 border rounded-lg" />
+                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} required placeholder="Email Address" className="w-full px-4 py-3 border rounded-lg" />
+                    <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} required placeholder="Phone Number" className="w-full px-4 py-3 border rounded-lg" />
+                    <select name="service" value={formData.service} onChange={handleInputChange} required className="w-full px-4 py-3 border text-black rounded-lg">
+                      {services.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
-                    <select
-                      name="appointmentType"
-                      value={formData.appointmentType}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 text-black border rounded-lg"
-                    >
+                    <select name="appointmentType" value={formData.appointmentType} onChange={handleInputChange} required className="w-full px-4 py-3 text-black border rounded-lg">
                       <option value="in-person">In-Person</option>
                       <option value="virtual">Virtual</option>
                     </select>
                   </div>
-                  <textarea
-                    name="notes"
-                    value={formData.notes}
-                    onChange={handleInputChange}
-                    rows={4}
-                    placeholder="Additional notes (optional)"
-                    className="w-full px-4 text-black py-3 border rounded-lg"
-                  />
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
-                  >
+                  <textarea name="notes" value={formData.notes} onChange={handleInputChange} rows={4} placeholder="Additional notes (optional)" className="w-full px-4 text-black py-3 border rounded-lg" />
+                  <button type="submit" disabled={loading} className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">
                     {loading ? 'Processing...' : 'Confirm Appointment'}
                   </button>
                 </form>

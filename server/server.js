@@ -10,7 +10,7 @@ const app = express();
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
     ? process.env.CLIENT_URL 
-    : ['http://localhost:3000', 'https://fwl-cpa.com'],
+    : ['http://localhost:3000','http://109.176.198.116:5000', 'https://fwl-cpa.com',],
   optionsSuccessStatus: 200
 };
 

@@ -112,10 +112,11 @@ setAvailableSlots(slots);
     setLoading(true);
 
     try {
-      await axios.post(`${API_URL}/api/appointments`, {
-        ...formData,
-        date: formData.date?.toISOString().split('T')[0]
-      });
+await axios.post(`${API_URL}/api/appointments`, {
+  ...formData,
+  date: formData.date?.toISOString().split('T')[0]
+});
+
 
       toast.success('Appointment booked successfully!');
       router.push('/book/success');

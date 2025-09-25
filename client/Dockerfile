@@ -6,6 +6,10 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
+
+# Copy production env
+COPY .env.production .env
+
 RUN npm run build
 
 # 2. Run stage
@@ -13,8 +17,6 @@ FROM node:18 AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-
-# Copy build output from builder
 COPY --from=builder /app ./
 
 EXPOSE 3000

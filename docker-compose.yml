@@ -5,7 +5,7 @@ services:
     build: ./server
     container_name: app-backend
     restart: always
-    env_file: ./server/.env
+    env_file: ./server/.env.production
     ports:
       - "5000:5000"
     networks:
@@ -15,15 +15,13 @@ services:
     build: ./client
     container_name: app-frontend
     restart: always
-    environment:
-      - NEXT_PUBLIC_API_URL=http://backend:5000
+    env_file: ./client/.env.production
     ports:
       - "3000:3000"
     depends_on:
       - backend
     networks:
       - app-network
-
 networks:
   app-network:
     driver: bridge

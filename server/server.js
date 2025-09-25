@@ -3,7 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const appointmentRoutes = require('./routes/appointments');
-const availabilityRoutes = require('./routes/availability');
 
 const app = express();
 
@@ -35,7 +34,6 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Routes
 app.use('/api/appointments', appointmentRoutes);
-app.use('/api/availability', availabilityRoutes);
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({ 

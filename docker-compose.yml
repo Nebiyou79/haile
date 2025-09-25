@@ -15,13 +15,15 @@ services:
     build: ./client
     container_name: app-frontend
     restart: always
-    env_file: ./client/.env.production
+    environment:
+      - NEXT_PUBLIC_API_URL=https://fwl-cpa.com/api
     ports:
       - "3000:3000"
     depends_on:
       - backend
     networks:
       - app-network
+
 networks:
   app-network:
     driver: bridge

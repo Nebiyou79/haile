@@ -61,8 +61,8 @@ const PaymentPage = () => {
             />
             <div>
               <h2 className="text-2xl font-semibold text-gray-800">Finance World</h2>
-              <p className="text-gray-500">6802 Paragon Place, Suite 410</p>
-              <p className="text-gray-500">Richmond, VA 23230</p>
+          <p>2809 Emerywood Pkwy, Ste 330 </p>              
+          <p className="text-gray-500">Henrico, VA 23294</p>
               <a
                 href="mailto:haile@fwl-cpa.com"
                 className="block text-blue-600 hover:text-blue-800 mt-2 underline"

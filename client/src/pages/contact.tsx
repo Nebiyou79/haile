@@ -26,8 +26,9 @@ const Contact = () => {
             </div>
             <div className="bg-white text-gray-800 shadow-lg rounded-xl p-8 text-center">
               <h3 className="text-2xl font-semibold mt-4">Location</h3>
-              <p className="mt-4 text-lg">6802 Paragon Place, Suite 410, Richmond, VA 23230</p>
-            </div>
+          <p>
+              2809 Emerywood Pkwy, Ste 330 Henrico, VA 23294
+          </p>            </div>
           </section>
           {/* <ContactForm/> */}
         </div>

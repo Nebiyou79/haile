@@ -141,12 +141,10 @@ const Home = () => {
       <div className="p-6 bg-blue-600 text-white rounded-lg shadow-md flex flex-col items-center">
         <FaMapMarkerAlt size={50} />
         <h3 className="text-2xl font-semibold mt-4">Visit Us</h3>
-        <a href="https://www.google.com/maps/place/6802+Paragon+Place,+Suite+410,+Richmond,+VA+23230" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           className="mt-2 text-lg underline hover:text-gray-200 transition">
-          6802 Paragon Place, Suite 410, Richmond, VA 23230
-        </a>
+            <a href="https://maps.app.goo.gl/2GBSiRFjmdBp6LvTA"
+              target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-400">
+              2809 Emerywood Pkwy, Ste 330 Henrico, VA 23294
+            </a>
       </div>
 
     </div>
